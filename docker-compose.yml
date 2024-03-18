@@ -1,0 +1,28 @@
+version: "3.7"
+
+services:
+  db:
+    container_name: postgres
+    image: postgres:16.2-alpine
+    volumes:
+        - db-data:/var/lib/postgresql/data
+    environment: 
+        POSTGRES_DB: app
+        POSTGRES_USER: postgres
+        POSTGRES_PASSWORD: P@ssw0rd
+        PGDATA: /var/lib/postgresql/data
+    ports:
+        - 55432:5432
+  
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8443:443
+      - 8080:80
+    environment:
+      - LotteryDbContext=server=localhost;port=5432;database=app;User Id=postgres;Password=P@ssw0rd;
+
+volumes:
+  db-data:
