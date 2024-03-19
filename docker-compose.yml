@@ -22,7 +22,7 @@ services:
       - 8443:443
       - 8080:80
     environment:
-      - LotteryDbContext=server=localhost;port=5432;database=app;User Id=postgres;Password=P@ssw0rd;
+      - LotteryDbContext=server=db;port=5432;database=app;User Id=postgres;Password=P@ssw0rd;
 
 volumes:
   db-data:

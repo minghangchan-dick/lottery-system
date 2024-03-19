@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace LoterySystemBackend.Extension
+namespace LoterySystemBackend.Extensions
 {
     public static class IWebHostExtension
     {

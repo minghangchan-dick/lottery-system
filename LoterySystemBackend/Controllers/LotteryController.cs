@@ -1,4 +1,5 @@
 ﻿using LoterySystemBackend.Interfaces;
+using LoterySystemBackend.Models;
 using LoterySystemBackend.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -20,7 +21,7 @@ namespace LoterySystemBackend.Controllers
 
         [HttpGet]
         [Route("/get_lottery_result")]
-        public IActionResult GetLotteryResult()
+        public ActionResult<Winner> GetLotteryResult()
         {
             var last_winner = _lotteryService.GetLastWinner();
             if(last_winner == null)
@@ -41,7 +42,7 @@ namespace LoterySystemBackend.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> PostLottery()
+        public async Task<ActionResult<Lottery>> PostLottery()
         {
             var lottery = await _lotteryService.GenerateLottery();
             return Ok(lottery);

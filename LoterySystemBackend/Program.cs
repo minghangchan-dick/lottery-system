@@ -1,5 +1,4 @@
 using LoterySystemBackend.Data;
-using LoterySystemBackend.Extension;
 using LoterySystemBackend.Extensions;
 using LoterySystemBackend.Interfaces;
 using LoterySystemBackend.Job;
@@ -29,17 +28,19 @@ namespace LoterySystemBackend
             builder.Services.AddAuthorization();
             builder.Services.AddControllers();
 
-            builder.Services.AddQuartz(q =>
-            {
-                q.AddJobAndTrigger<DrawLotteryJob>(builder.Configuration);
-            });
+            //builder.Services.AddQuartz(q =>
+            //{
+            //    q.AddJobAndTrigger<DrawLotteryJob>(builder.Configuration);
+            //});
+            builder.Services.Configure<LotteryConfig>(builder.Configuration);
+            builder.Services.Configure<QuartzConfig>(builder.Configuration);
 
+            builder.Services.AddQuartz();
             builder.Services.AddHostedService<QuartzHostedService>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
-            builder.Services.Configure<Configuration>(builder.Configuration);
             builder.Services.AddScoped<LotteryRepository>();
             builder.Services.AddScoped<ILotteryService, LotteryService>();
 

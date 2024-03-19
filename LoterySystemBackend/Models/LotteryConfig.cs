@@ -1,6 +1,6 @@
 ﻿namespace LoterySystemBackend.Models
 {
-    public class Configuration
+    public class LotteryConfig
     {
         public int LotteryMaxLimit { get; set; }
     }

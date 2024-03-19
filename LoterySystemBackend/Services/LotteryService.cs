@@ -10,9 +10,9 @@ namespace LoterySystemBackend.Services
     {
         private readonly ILogger _logger;
         private readonly LotteryRepository _lotteryRepository;
-        private readonly IOptions<Configuration> _configuration;
+        private readonly IOptions<LotteryConfig> _configuration;
 
-        public LotteryService(ILogger<LotteryService> logger, IOptions<Configuration> configuration, LotteryRepository lotteryRepository)
+        public LotteryService(ILogger<LotteryService> logger, IOptions<LotteryConfig> configuration, LotteryRepository lotteryRepository)
         {
             _logger = logger;
             _configuration = configuration;
